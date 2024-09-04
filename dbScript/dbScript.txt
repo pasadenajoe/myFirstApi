@@ -1,0 +1,20 @@
+CREATE TABLE estud(
+    est_num bigint CONSTRAINT firstkey PRIMARY KEY,
+	est_ced	varchar(20) UNIQUE,	
+    est_p_nom varchar(25),
+	est_s_nom varchar(25),
+	est_p_apel varchar(25),
+	est_s_apel varchar(25),
+	est_fecha_nac date,
+	est_tipo_sangre varchar(5),
+	est_genero char(1),
+	est_nacionalidad varchar(5)
+);
+
+CREATE SEQUENCE estud_secuencia
+	INCREMENT BY 1
+	MINVALUE 1
+	OWNED BY estud.est_num ;
+
+alter table estud alter est_num SET DEFAULT nextval('estud_secuencia');
+alter table estud add constraint estud_unique_ced unique (est_ced);
